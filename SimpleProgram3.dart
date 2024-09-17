@@ -22,40 +22,70 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: Text("Gerenciador de Tarefas"),
         ),
-        body: Column(
+        body: ListView(
           children: [
-            Stack(
-              children: [
-                Container(
-                  color: Colors.lightBlue,
-                  height: 130,
-                ),
-                Container(
-                  color: Colors.white70,
-                  height: 100,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Container(
-                        width: 80,
-                        color: Colors.grey,
-                      ),
-                      Text("Aprender Flutter!"),
-                      FloatingActionButton(
-                        onPressed: () {},
-                        child: Icon(Icons.keyboard_arrow_up),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
+           Task("Temos que estudar Flutter"),
+            Task("Temos que aprender dart"),
+            Task("Temos que fazer a Aps"),
+            Task("Criar wireframe"),
+            Task("Implementar App"),
           ],
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {},
           child: Icon(Icons.add),
         ),
+      ),
+    );
+  }
+}
+
+class Task extends StatelessWidget {
+  final String nome;
+
+  const Task(this.nome,{super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Stack(
+        children: [
+          Container(
+            color: Colors.lightBlue,
+            height: 130,
+
+          ),
+          Container(
+            color: Colors.white70,
+            height: 100,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  width: 80,
+                  color: Colors.grey),
+              Container(
+                  width: 200 ,
+                child: Text(
+                  nome,
+                  style: TextStyle(
+                    fontSize: 18,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+
+                ),
+              ),
+
+
+
+                FloatingActionButton(
+                  onPressed: () {},
+                  child: Icon(Icons.keyboard_arrow_up),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
